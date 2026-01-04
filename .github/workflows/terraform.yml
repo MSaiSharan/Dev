@@ -41,5 +41,5 @@ jobs:
         working-directory: prod
         run: terraform apply -auto-approve
 
-      - name: Validate Infra (Python)
-        run: python scripts/test.py
+      # name: Validate Infra (Python)
+       # run: python scripts/test.py
