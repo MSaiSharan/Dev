@@ -22,7 +22,7 @@ resource "aws_subnet" "private" {
   tags = { Name = "private-subnet" }
 }
 
-
+# Internet Gateway
 resource "aws_internet_gateway" "dev_igw" {
   vpc_id = aws_vpc.dev_vpc.id
   tags = { Name = "dev-igw" }
