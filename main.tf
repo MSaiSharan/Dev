@@ -57,6 +57,8 @@ resource "aws_eip" "nat_eip" {
 
 }
 
+// Security Group
+
 resource "aws_security_group" "dev_security_group" {
     name        = "dev-security-group"
     description = "Security group for dev environment"
