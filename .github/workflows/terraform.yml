@@ -41,5 +41,10 @@ jobs:
         working-directory: prod
         run: terraform apply -auto-approve
 
+      - name: Terraform Destroy
+        working-directory: prod
+        run: terraform Destroy -auto-approve
+
       # name: Validate Infra (Python)
        # run: python scripts/test.py
+       
