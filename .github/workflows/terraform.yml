@@ -25,15 +25,15 @@ jobs:
         run: pip install boto3
 
       - name: Terraform Init
-        working-directory: Dev/prod
+        working-directory: prod
         run: terraform init
 
       - name: Terraform Plan
-        working-directory: Dev/prod
+        working-directory: prod
         run: terraform plan
 
       - name: Terraform Apply
-        working-directory: Dev/prod
+        working-directory: prod
         run: terraform apply -auto-approve
 
       - name: Validate Infra (Python)
