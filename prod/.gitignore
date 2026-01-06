@@ -1,0 +1,4 @@
+.terraform/
+terraform.tfstate
+terraform.tfstate.*
+pulled_state.json
