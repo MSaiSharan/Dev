@@ -29,7 +29,7 @@ resource "aws_iam_role_policy" "vpc_flow_log_policy" {
             "logs:PutLogEvents",
             ]
             Effect   = "Allow"
-            Resource = aws_cloudwatch_log_group.dev_log_group.arn + ":*"
+            Resource = "${aws_cloudwatch_log_group.dev_log_group.arn}:*"
         }
         ]
     })
