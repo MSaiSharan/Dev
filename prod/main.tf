@@ -77,3 +77,9 @@ resource "aws_security_group" "dev_security_group" {
         cidr_blocks = ["0.0.0.0/0"]  
     }
 }
+
+resource "aws_cloudwatch_log_group" "dev_log_group" {
+  name =  "/aws/dev/logs"
+  retention_in_days = 7
+
+}
