@@ -29,9 +29,18 @@ resource "aws_iam_role_policy" "vpc_flow_log_policy" {
             "logs:PutLogEvents",
             ]
             Effect   = "Allow"
-            Resource = aws_cloudwatch_log_group.dev_log_group.arn + ":*"
+            Resource = "${aws_cloudwatch_log_group.dev_log_group.arn}:*"
         }
         ]
     })
   
+}
+
+resource "aws_flow_log" "dev_flow" {
+     vpc_id               = data.aws_vpc.dev_vpc.id
+  traffic_type         = "ALL"
+  log_destination_type = "cloud-watch-logs"
+  log_destination      = aws_cloudwatch_log_group.dev_log_group.arn
+  iam_role_arn         = aws_iam_role.vpc_flow_log.arn
+
 }
