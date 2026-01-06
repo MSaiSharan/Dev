@@ -37,7 +37,8 @@ resource "aws_iam_role_policy" "vpc_flow_log_policy" {
 }
 
 resource "aws_flow_log" "dev_flow" {
-     vpc_id               = data.aws_vpc.dev_vpc.id
+
+  vpc_id               = aws_vpc.dev_vpc.id
   traffic_type         = "ALL"
   log_destination_type = "cloud-watch-logs"
   log_destination      = aws_cloudwatch_log_group.dev_log_group.arn
