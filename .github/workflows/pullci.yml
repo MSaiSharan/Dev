@@ -7,5 +7,18 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Terraform format check
+        working-directory: prod
+        run: terraform fmt -check
+
+
+      - name: Terraform validate
+        working-directory: prod
+        run: terraform validate
+
       - name: Dummy step
         run: echo "CI is running on Pull Request"
