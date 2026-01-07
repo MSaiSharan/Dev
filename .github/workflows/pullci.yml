@@ -1,0 +1,11 @@
+name: PR Validation CI
+
+on:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy step
+        run: echo "CI is running on Pull Request"
