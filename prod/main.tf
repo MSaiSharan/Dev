@@ -6,12 +6,12 @@ resource "aws_vpc" "dev_vpc" {
     Name = "dev-vpc"
   }
 }
-  resource "aws_subnet" "public" {
+resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.dev_vpc.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
   availability_zone       = "us-east-1a"
-  tags = { Name = "public-subnet" }
+  tags                    = { Name = "public-subnet" }
 }
 
 # Private Subnet
@@ -19,13 +19,13 @@ resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.dev_vpc.id
   cidr_block        = "10.0.2.0/24"
   availability_zone = "us-east-1a"
-  tags = { Name = "private-subnet" }
+  tags              = { Name = "private-subnet" }
 }
 
 # Internet Gateway
 resource "aws_internet_gateway" "dev_igw" {
   vpc_id = aws_vpc.dev_vpc.id
-  tags = { Name = "dev-igw" }
+  tags   = { Name = "dev-igw" }
 }
 
 
@@ -49,8 +49,8 @@ resource "aws_route_table_association" "public_assoc" {
 resource "aws_nat_gateway" "dev_nat_gateway" {
   allocation_id = aws_eip.nat_eip.id
   subnet_id     = aws_subnet.public.id
-  tags = { Name = "dev-nat-gateway" }
-  
+  tags          = { Name = "dev-nat-gateway" }
+
 }
 
 resource "aws_eip" "nat_eip" {
@@ -60,26 +60,26 @@ resource "aws_eip" "nat_eip" {
 // Security Group
 
 resource "aws_security_group" "dev_security_group" {
-    name        = "dev-security-group"
-    description = "Security group for dev environment"
-    vpc_id      = aws_vpc.dev_vpc.id
-    
-    ingress {
-        from_port   = 22
-        to_port     = 22
-        protocol    = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    ingress {
-        from_port   = 8080
-        to_port     = 8080
-        protocol    = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]  
-    }
+  name        = "dev-security-group"
+  description = "Security group for dev environment"
+  vpc_id      = aws_vpc.dev_vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 resource "aws_cloudwatch_log_group" "dev_log_group" {
-  name =  "/aws/dev/logs"
+  name              = "/aws/dev/logs"
   retention_in_days = 7
 
 }
