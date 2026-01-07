@@ -42,4 +42,5 @@ jobs:
         run: terraform apply -auto-approve
 
       - name: Python script
-        run: python prod/scripts/output.py
+        working-directory: scripts
+        run: python output.py
