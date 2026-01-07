@@ -43,4 +43,4 @@ jobs:
 
       - name: Python script
         working-directory: scripts
-        run: python output.py
+        run: python test.py

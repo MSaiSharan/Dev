@@ -47,7 +47,7 @@ natgateways=ec2.describe_nat_gateways(
     ]
 )
 for nat in natgateways["NatGateways"]:
-    print("NAT Gateway in VPC ID:", nat["NatGatewayId"])
+    print("NAT Gateway in VPC ID :", nat["NatGatewayId"])
 
 aws_account_id=boto3.client("sts").get_caller_identity().get("Account")
 print("AWS Account ID:", aws_account_id)
