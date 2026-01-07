@@ -7,5 +7,12 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Dummy step
-        run: echo "CI is running on Pull Request"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform fmt check
+        run: terraform fmt -check -recursive

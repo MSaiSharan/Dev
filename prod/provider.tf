@@ -1,3 +1,3 @@
 provider "aws" {
-  region = "us-east-1"  # choose your region
+  region = "us-east-1" # choose your region
 }
