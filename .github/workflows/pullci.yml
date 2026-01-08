@@ -19,3 +19,15 @@ jobs:
 
       - name: Terraform validate
         run: terraform validate
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'  
+
+      - name: install dependencies
+        run: pip install boto3
+
+      - name: Run validation script
+        working-directory: scripts
+        run: python test.py      
