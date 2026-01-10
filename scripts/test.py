@@ -51,3 +51,13 @@ for nat in natgateways["NatGateways"]:
 
 aws_account_id=boto3.client("sts").get_caller_identity().get("Account")
 print("AWS Account ID:", aws_account_id)
+
+for sg in ec2.describe_security_groups(
+    Filters=[
+        {
+            "Name": "vpc-id",
+            "Values": [vpc_id]
+        }
+    ]
+)["SecurityGroups"]:
+    print("Security Group ID:", sg["GroupId"])
