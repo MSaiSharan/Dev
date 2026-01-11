@@ -35,16 +35,7 @@ jobs:
 
       - name: Terraform Plan
         working-directory: prod
-        run: terraform plan
-
-    approve:
-    name: Manual Approval
-    runs-on: ubuntu-latest
-    needs: validate
-    environment: Prod
-    steps:
-      - name: Waiting for approval
-        run: echo "Approved. Proceeding..."    
+        run: terraform plan   
 
       - name: Terraform Apply
         working-directory: prod
