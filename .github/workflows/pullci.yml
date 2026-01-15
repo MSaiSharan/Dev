@@ -20,7 +20,7 @@ jobs:
       - name: Terraform validate
         run: terraform validate
 
-  approve:  #test
+  approve:
     name: Manual Approval
     runs-on: ubuntu-latest
     needs: validate
