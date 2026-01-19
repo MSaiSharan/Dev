@@ -27,7 +27,7 @@ jobs:
     environment: Prod
     steps:
       - name: Waiting for approval
-        run: echo "Approved. Proceeding.."    
+        run: echo "Approved. Proceeding."    
 
 
       - name: Setup Python
